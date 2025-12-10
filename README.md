@@ -35,7 +35,7 @@ ml-energy-consumption-app/
 └─ models_adv/                 (generated at runtime)
 
  <h2>Installation & Setup</h2>
- ## Installation & Setup
+ 
 
 
 
@@ -162,7 +162,13 @@ latest_forecast.csv
 delhi_energy_2yr_zone.csv
 
 </div>
-
+<h2>Outputs</h2>
+<p align="center">
+  <img src="<p align="center">
+  <img src=""C:\Users\reena\energy consumption\images\Screenshot 2025-12-11 041454.png"" width="700">
+</p>
+" width="700">
+</p>
 
 <h2> Future Enhancements</h2>
 
