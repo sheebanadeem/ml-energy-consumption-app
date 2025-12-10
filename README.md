@@ -25,7 +25,7 @@ REST API endpoint: /api/predict
 
 Loads delhi_energy_2yr_zone.csv directly from project folder (no upload needed)
 
-📁 Repo Structure
+Repo Structure
 ml-energy-consumption-app/
 ├─ app.py
 ├─ requirements.txt
@@ -34,7 +34,7 @@ ml-energy-consumption-app/
 ├─ delhi_energy_2yr_zone.csv   (local only, not committed)
 └─ models_adv/                 (generated at runtime)
 
-⚙️ Installation & Setup
+ Installation & Setup
 1. Clone the repository
 <div>
 git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
@@ -148,7 +148,7 @@ delhi_energy_2yr_zone.csv
 </div>
 
 
-🔮 Future Enhancements
+ Future Enhancements
 
 MLflow or W&B experiment tracking
 
@@ -160,7 +160,7 @@ Postgres/TimescaleDB time-series backend
 
 Authentication for dashboard & API
 
-👩‍💻 Author
+ Author
 
 Sheeba Nadeem
 GitHub: https://github.com/sheebanadeem
