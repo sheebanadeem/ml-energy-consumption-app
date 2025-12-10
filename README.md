@@ -35,6 +35,42 @@ ml-energy-consumption-app/
 └─ models_adv/                 (generated at runtime)
 
  <h2>Installation & Setup</h2>
+ ## Installation & Setup
+
+<div>
+
+```bash
+git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
+cd ml-energy-consumption-app
+```
+
+</div>
+
+<div>
+
+```bash
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+</div>
+
+<div>
+
+```bash
+pip install -r requirements.txt
+```
+
+</div>
+
+<div>
+
+```bash
+python app.py
+```
+
+</div>
+
 1. Clone the repository
 <div>
 git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
