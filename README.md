@@ -1,5 +1,5 @@
-<h1 align="center">⚡ Advanced Energy Forecasting — Dash Application</h1> <p align="center"> A complete end-to-end energy forecasting system using <strong>XGBoost</strong> and <strong>LightGBM</strong>, featuring a fully interactive <strong>Dash</strong> dashboard, walk-forward CV, recursive multi-step forecasting, model versioning, and downloadable artifacts. </p>
-🚀 Features
+<h1 align="center">Advanced Energy Forecasting — Dash Application</h1> <p align="center"> A complete end-to-end energy forecasting system using <strong>XGBoost</strong> and <strong>LightGBM</strong>, featuring a fully interactive <strong>Dash</strong> dashboard, walk-forward CV, recursive multi-step forecasting, model versioning, and downloadable artifacts. </p>
+Features
 
 Interactive Dash dashboard
 
@@ -76,8 +76,8 @@ Open in browser:
 http://127.0.0.1:8050/
 
 </div>
-📊 Using the App (Quick Guide)
-✔️ Train Models
+ Using the App (Quick Guide)
+ Train Models
 
 Click Train Models
 
@@ -87,7 +87,7 @@ Final models are saved in models_adv/
 
 manifest.json updates automatically
 
-✔️ Forecast
+ Forecast
 
 Choose forecast horizon
 
@@ -95,7 +95,7 @@ Click Forecast & Download
 
 latest_forecast.csv is saved + downloadable
 
-✔️ Visuals
+Visuals
 
 Consumption graph
 
@@ -105,7 +105,7 @@ SHAP summary (if installed)
 
 Forecast plot
 
-🔌 REST API — Predict Programmatically
+ REST API — Predict Programmatically
 Endpoint
 
 POST /api/predict
@@ -125,7 +125,7 @@ curl -X POST http://localhost:8050/api/predict \
   -d "{\"features\":[{\"lag_1\":120,\"lag_24\":90}],\"model\":\"lgb\"}"
 
 </div>
-🗂️ Model Artifacts
+ Model Artifacts
 
 Saved automatically to models_adv/:
 
@@ -133,7 +133,8 @@ File	Description
 models_<timestamp>.pkl	Full model bundle (xgb, lgb, scaler, features)
 manifest.json	Metadata for versioning / lineage
 latest_forecast.csv	Most recent generated forecast
-🧾 Recommended .gitignore
+
+ Recommended .gitignore
 <div>
 venv/
 __pycache__/
@@ -145,15 +146,7 @@ latest_forecast.csv
 delhi_energy_2yr_zone.csv
 
 </div>
-📄 Resume-Ready Description (Copy & Paste)
 
-Short (1–2 lines)
-
-Built a production-grade energy forecasting system using XGBoost & LightGBM with walk-forward validation, SHAP explainability, recursive multi-step forecasting, and an interactive Dash dashboard.
-
-Medium (3–4 lines)
-
-Developed an advanced energy forecasting platform featuring automated feature scaling, walk-forward CV, XGBoost/LightGBM model selection, model versioning, and a REST API. Implemented recursive multi-step predictions, SHAP-based explainability, and a full Dash dashboard for visualization and forecasting export.
 
 🔮 Future Enhancements
 
@@ -172,4 +165,4 @@ Authentication for dashboard & API
 Sheeba Nadeem
 GitHub: https://github.com/sheebanadeem
 
-<p align="center"><em>Want badges, screenshots, or an architecture diagram added? I can generate those too — just tell me!</em></p>
+
