@@ -1,191 +1,215 @@
-Advanced Energy Forecasting Dashboard (XGBoost + LightGBM)
+<!-- README.md - HTML-wrapped, copy-button-ready -->
 
-An end-to-end energy consumption forecasting system built with Python, Dash, XGBoost, and LightGBM.
-Includes recursive forecasting, walk-forward validation, SHAP explainability, model versioning, and a REST API.
+<h1 align="center">Advanced Energy Forecasting (Dash)</h1>
 
-Features
+<p align="center">
+  <strong>End-to-end energy consumption forecasting system</strong> using
+  <code>XGBoost</code> & <code>LightGBM</code>, with a Dash dashboard, model
+  versioning, forecasting export, and a REST prediction API.
+</p>
 
-Interactive Dash dashboard
+---
 
-Time-series visualization (energy consumption by zone)
+## 🔎 Project Highlights
 
-Walk-forward CV for robust model evaluation
+- Interactive **Dash** dashboard for visualization & forecasting  
+- Walk-forward cross validation (time series)  
+- XGBoost & LightGBM models (final training + CV)  
+- Recursive multi-step forecasting (hourly horizon)  
+- Model versioning + `manifest.json` metadata  
+- Forecast CSV export & download endpoints  
+- REST API endpoint: **`POST /api/predict`**  
+- Optional SHAP explainability for feature importance  
+- No upload UI — loads `delhi_energy_2yr_zone.csv` directly from project folder
 
-XGBoost & LightGBM model training
+---
 
-Recursive multi-step forecasting
+## 📁 Repo structure
 
-Model versioning (manifest.json + timestamped models)
-
-Exportable forecast CSV
-
-REST API (/api/predict)
-
-Optional SHAP explainability
-
-Clean production-style code structure
-
- Project Structure
+```text
 ml-energy-consumption-app/
-│── app.py
-│── requirements.txt
-│── README.md
-│── .gitignore
-│── delhi_energy_2yr_zone.csv        (ignored by git)
-│── models_adv/                      (generated automatically)
-│── latest_forecast.csv              (generated automatically)
-│── manifest.json                    (generated automatically)
-
- Installation & Setup
- 1) Clone the repository
+├─ app.py
+├─ requirements.txt
+├─ README.md
+├─ .gitignore
+├─ delhi_energy_2yr_zone.csv  (place locally — not committed)
+└─ models_adv/                (generated at runtime; ignored)
+⚙️ Installation & Setup
+<div>
+bash
+Copy code
+# 1) clone the repository
 git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
 cd ml-energy-consumption-app
-
- 2) Create & activate virtual environment
-Windows
+</div> <div>
+bash
+Copy code
+# 2) create & activate a virtual environment (Windows)
 python -m venv venv
 .\venv\Scripts\activate
-
-macOS / Linux
+</div> <div>
+bash
+Copy code
+# 2b) create & activate a virtual environment (macOS / Linux)
 python3 -m venv venv
 source venv/bin/activate
-
- 3) Install dependencies
+</div> <div>
+bash
+Copy code
+# 3) install dependencies
 pip install -r requirements.txt
+</div>
+📥 Add the dataset
+Place your CSV file next to app.py:
 
-4) Add the dataset (required)
-
-Place your CSV in the same folder as app.py:
-
+<div>
+text
+Copy code
 delhi_energy_2yr_zone.csv
+</div>
+The dataset is intentionally listed in .gitignore so it remains local. If you want to include a sample dataset for demo purposes, create a small sample_data.csv and commit that instead.
 
-
-This file is intentionally excluded from GitHub using .gitignore.
-
- Run the Application
+▶️ Run the app
+<div>
+bash
+Copy code
 python app.py
+</div>
+Open your browser:
 
+<div>
+text
+Copy code
+http://127.0.0.1:8050/
+</div>
+🧭 How to use (quick)
+Open the app in your browser.
 
-Then open:
+Select date range (or leave default).
 
- http://127.0.0.1:8050/
+Click Train Models to run walk-forward CV and final model fits.
 
-1 How It Works
- Load data automatically
+Training status appears in the top-right (polling).
 
-The app loads delhi_energy_2yr_zone.csv on startup (no upload needed).
+Models saved to models_adv/models_YYYYMMDD_HHMMSS.pkl and manifest.json updated.
 
-2️ Train models
+Click Forecast & Download to generate next N-hour forecast — latest_forecast.csv saved.
 
-Click the Train Models button:
+Use /download_model, /download_manifest, /download_latest_forecast for downloads.
 
-Computes lag, rolling & calendar features
+🔌 API — programmatic predictions
+Endpoint
 
-Scales numerical data
-
-Runs XGBoost walk-forward CV
-
-Runs LightGBM walk-forward CV
-
-Trains final models
-
-Saves model version → models_adv/models_YYYYMMDD_HHMMSS.pkl
-
-Saves details into manifest.json
-
-3️ View evaluation plots
-
-Leaderboard (RMSE, MAE)
-
-SHAP feature importance (if installed)
-
-4️ Generate forecasts
-
-Click Forecast & Download:
-
-Performs recursive forecasting
-
-Saves latest_forecast.csv
-
-Displays interactive forecast plot
-
-API Usage
 POST /api/predict
-curl -X POST http://localhost:8050/api/predict \
--H "Content-Type: application/json" \
--d "{ \"features\": [{\"lag_1\":120, \"lag_24\":90, \"hour\":14}], \"model\":\"lgb\" }"
 
-Response:
+Payload
+
+json
+Copy code
 {
-  "predictions": [3456.78]
+  "features": [
+    {"lag_1": 120, "lag_24": 90, "hour": 14, "dayofweek": 2, "temp_c": 30},
+    {"lag_1": 110, "lag_24": 95, "hour": 15, "dayofweek": 2, "temp_c": 30}
+  ],
+  "model": "lgb"   // optional, "xgb" or "lgb"
 }
+cURL example
 
-Example Forecast Output
-timestamp           forecast_mw
-2023-01-01 01:00    3321.42
-2023-01-01 02:00    3378.11
-...
+<div>
+bash
+Copy code
+curl -X POST http://localhost:8050/api/predict \
+  -H "Content-Type: application/json" \
+  -d '{"features":[{"lag_1":120,"lag_24":90,"hour":14}],"model":"lgb"}'
+</div>
+Response
 
-Download Endpoints
-/download_model
-/download_manifest
-/download_latest_forecast
+json
+Copy code
+{"predictions":[3456.78]}
+📊 Plots & explainability
+Model leaderboard shows CV/holdout RMSE & MAE for XGBoost and LightGBM.
+
+SHAP summary (if shap is installed) shows mean |SHAP value| for top features.
+If SHAP is not installed or too slow on CPU, the app falls back to showing a message.
+
+🧾 Saved artifacts
+models_adv/models_<timestamp>.pkl → versioned model bundle (xgb, lgb, scaler, feature list)
+
+models_adv/manifest.json → metadata for model runs (metrics, created_at, params)
+
+models_adv/latest_forecast.csv → last generated forecast CSV
+
+✅ .gitignore (recommended)
+<div>
+text
+Copy code
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.DS_Store
+.vscode/
+.idea/
+models_adv/
+*.pkl
+*.joblib
+latest_forecast.csv
+delhi_energy_2yr_zone.csv
+</div>
+🛠 Troubleshooting & tips
+If training seems stuck, check models_adv/train_status.json for current status.
+
+If LightGBM/XGBoost complains about early-stopping kwargs, the app uses robust wrappers that retry compatible signatures.
+
+If you accidentally committed the large CSV, remove it with:
+
+<div>
+bash
+Copy code
+git rm --cached delhi_energy_2yr_zone.csv
+git commit -m "Remove dataset from repo"
+git push
+</div>
+📝 Resume / Project description (copy-paste friendly)
+Short (1 line)
+
+Energy forecasting dashboard + API using XGBoost & LightGBM, walk-forward CV, recursive multi-step forecasting, and model versioning (Dash).
+
+Medium (2 lines)
+
+Developed an end-to-end energy consumption forecasting system featuring feature engineering, walk-forward CV, XGBoost & LightGBM models, SHAP explainability, a Dash dashboard, and a REST /api/predict endpoint. Implemented model versioning and downloadable forecasts for deployment-ready delivery.
+
+🔮 Future improvements
+Add MLflow or Weights & Biases for experiment tracking
+
+Dockerize (Gunicorn + Nginx) for deployment
+
+Add authentication & role-based access to the dashboard/API
+
+Use TimescaleDB/Postgres for scalable time-series storage & scheduled retraining
+
+Add unit tests and CI (GitHub Actions) for reproducibility
 
 
-Each returns a downloadable file.
 
- Technologies Used
+👩‍💻 Author
+Sheeba Nadeem — GitHub: https://github.com/sheebanadeem
 
-Python
+<p align="center"><em>If you want, I can also add badges, screenshots section (with image links), or a diagram (drawn as SVG) showing architecture — tell me which and I’ll update the README.</em></p> ```
+I
 
-Dash + Bootstrap
 
-Plotly
 
-XGBoost
 
-LightGBM
 
-Scikit-learn
 
-Pandas / NumPy
 
-SHAP (optional)
 
-Joblib
 
-REST API (Flask inside Dash)
 
- .gitignore Included
 
-Prevents committing:
 
-virtual environments
-
-large CSV dataset
-
-model files
-
-forecast CSV
-
-pycache
-
- Future Improvements
-
-MLflow tracking
-
-Automated retraining (CRON / GitHub Actions)
-
-Docker deployment
-
-Add authentication to API endpoints
-
-Use a database (Postgres / TimescaleDB) instead of CSV
-
- Author
-
-Sheeba Nadeem
-GitHub: https://github.com/sheebanadeem
-
-Project: ml-energy-consumption-app
-
+ChatGPT 
