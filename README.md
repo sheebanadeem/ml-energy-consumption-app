@@ -1,5 +1,5 @@
 <h1 align="center">Advanced Energy Forecasting — Dash Application</h1> <p align="center"> A complete end-to-end energy forecasting system using <strong>XGBoost</strong> and <strong>LightGBM</strong>, featuring a fully interactive <strong>Dash</strong> dashboard, walk-forward CV, recursive multi-step forecasting, model versioning, and downloadable artifacts. </p>
-Features
+<h2>Features</h2>
 
 Interactive Dash dashboard
 
