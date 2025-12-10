@@ -37,61 +37,38 @@ ml-energy-consumption-app/
  <h2>Installation & Setup</h2>
  ## Installation & Setup
 
-<div>
 
-```bash
-git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
-cd ml-energy-consumption-app
-```
 
-</div>
 
-<div>
 
-```bash
-python -m venv venv
-.\venv\Scripts\activate
-```
 
-</div>
 
-<div>
-
-```bash
-pip install -r requirements.txt
-```
-
-</div>
-
-<div>
-
-```bash
-python app.py
-```
-
-</div>
 
 1. Clone the repository
 <div>
+
+```bash
 git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
 cd ml-energy-consumption-app
+```
 
 </div>
 2. Create & activate a virtual environment (Windows)
 <div>
+
+```bash
 python -m venv venv
 .\venv\Scripts\activate
+```
 
 </div>
-macOS / Linux users:
-<div>
-python3 -m venv venv
-source venv/bin/activate
 
-</div>
 3. Install dependencies
 <div>
+
+```bash
 pip install -r requirements.txt
+```
 
 </div>
 4. Ensure the dataset exists
@@ -102,7 +79,10 @@ delhi_energy_2yr_zone.csv
 
 5. Run the Dash application
 <div>
+
+```bash
 python app.py
+```
 
 </div>
 
