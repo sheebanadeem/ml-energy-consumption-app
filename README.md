@@ -167,8 +167,7 @@ delhi_energy_2yr_zone.csv
   <img src="<p align="center">
   <img src=""images\Screenshot 2025-12-11 041454.png"" width="700">
 </p>
-" width="700">
-</p>
+
 
 <h2> Future Enhancements</h2>
 
