@@ -1,0 +1,29 @@
+# .gitignore (paste into project root)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Models / outputs / large files (do NOT commit large binary models or raw dataset)
+models_adv/
+*.pkl
+*.joblib
+latest_forecast.csv
+app.log
+
+# Dataset - keep local, don't push large CSVs to GitHub
+delhi_energy_2yr_zone.csv
+
+# Optional - if you use LFS, comment the dataset ignore and use LFS
+# *.csv
