@@ -25,7 +25,7 @@ REST API endpoint: /api/predict
 
 Loads delhi_energy_2yr_zone.csv directly from project folder (no upload needed)
 
-Repo Structure
+<h2>Repo Structure</h2>
 ml-energy-consumption-app/
 ├─ app.py
 ├─ requirements.txt
@@ -34,7 +34,7 @@ ml-energy-consumption-app/
 ├─ delhi_energy_2yr_zone.csv   (local only, not committed)
 └─ models_adv/                 (generated at runtime)
 
- Installation & Setup
+ <h2>Installation & Setup</h2>
 1. Clone the repository
 <div>
 git clone https://github.com/sheebanadeem/ml-energy-consumption-app.git
@@ -76,7 +76,7 @@ Open in browser:
 http://127.0.0.1:8050/
 
 </div>
- Using the App (Quick Guide)
+ <h2>Using the App (Quick Guide)</h2>
  Train Models
 
 Click Train Models
@@ -105,7 +105,7 @@ SHAP summary (if installed)
 
 Forecast plot
 
- REST API — Predict Programmatically
+<h2> REST API — Predict Programmatically</h2>
 Endpoint
 
 POST /api/predict
@@ -125,7 +125,7 @@ curl -X POST http://localhost:8050/api/predict \
   -d "{\"features\":[{\"lag_1\":120,\"lag_24\":90}],\"model\":\"lgb\"}"
 
 </div>
- Model Artifacts
+<h2> Model Artifacts</h2>
 
 Saved automatically to models_adv/:
 
@@ -134,7 +134,7 @@ models_<timestamp>.pkl	Full model bundle (xgb, lgb, scaler, features)
 manifest.json	Metadata for versioning / lineage
 latest_forecast.csv	Most recent generated forecast
 
- Recommended .gitignore
+ <h2>Recommended .gitignore</h2>
 <div>
 venv/
 __pycache__/
@@ -148,7 +148,7 @@ delhi_energy_2yr_zone.csv
 </div>
 
 
- Future Enhancements
+<h2> Future Enhancements</h2>
 
 MLflow or W&B experiment tracking
 
@@ -160,7 +160,7 @@ Postgres/TimescaleDB time-series backend
 
 Authentication for dashboard & API
 
- Author
+<h2> Author</h2>
 
 Sheeba Nadeem
 GitHub: https://github.com/sheebanadeem
