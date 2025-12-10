@@ -165,7 +165,7 @@ delhi_energy_2yr_zone.csv
 <h2>Outputs</h2>
 <p align="center">
   <img src="<p align="center">
-  <img src=""C:\Users\reena\energy consumption\images\Screenshot 2025-12-11 041454.png"" width="700">
+  <img src=""images\Screenshot 2025-12-11 041454.png"" width="700">
 </p>
 " width="700">
 </p>
