@@ -158,7 +158,7 @@ REST API (Flask inside Dash)
 
  .gitignore Included
 
-✔ Prevents committing:
+Prevents committing:
 
 virtual environments
 
