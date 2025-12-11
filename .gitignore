@@ -21,9 +21,3 @@ models_adv/
 *.joblib
 latest_forecast.csv
 app.log
-
-# Dataset - keep local, don't push large CSVs to GitHub
-delhi_energy_2yr_zone.csv
-
-# Optional - if you use LFS, comment the dataset ignore and use LFS
-# *.csv
